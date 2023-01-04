@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from './hex.module.scss';
 import {IHex} from "../../utils/types";
-import { type } from '@testing-library/user-event/dist/type';
 
 interface hexProps{
     dataHex:IHex
@@ -11,6 +10,7 @@ const Hex:React.FC<hexProps> = ({dataHex}) => {
 
     return (
         <div className={style.hex}>
+           <p style={{color:'black', position:'absolute', bottom:0, left:'50%'}}>{dataHex.id.toString()}</p>
         </div>
     );
 };

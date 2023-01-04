@@ -1,0 +1,5 @@
+@import '../../assets/style/_general.scss';
+
+.mapWrapper{
+    @include mapWrapper(7,5)
+}

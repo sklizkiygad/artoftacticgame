@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IHex } from '../../utils/types';
 import Hex from '../hex/hex';
-import style from './map.module.scss'
+import style from './mapTankBattle.module.scss'
 
 const Map = ()=>{
     const [hexes, setHexes] = useState<Array<IHex>>([{id:0}])

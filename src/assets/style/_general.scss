@@ -1,0 +1,28 @@
+$hex-size:10vw;
+
+@mixin mapWrapper($column-count, $row-count){
+    position: relative;
+    height: calc(#{$hex-size} * #{$row-count} + #{$row-count}px - #{$hex-size});
+    width: calc(#{$hex-size} * #{$column-count} + #{$column-count}px);
+
+    .hexRow{
+        position: absolute;
+        display: flex;
+        gap: 1px;
+    
+        &:nth-child(1){
+            top: 0;
+        }
+        @for $i from 2 through $row-count {
+            &:nth-child(#{$i}){
+                top: calc((#{$hex-size}*#{$i - 1}) + #{$i - 1}px - #{$hex-size}/4 * #{$i - 1});
+            }
+        }
+        &:nth-child(even){
+            left: calc(#{$hex-size} / 2);
+        }
+        &:nth-child(odd){
+            left: 0;
+        }
+    }
+}

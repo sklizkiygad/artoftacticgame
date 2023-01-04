@@ -1,4 +1,4 @@
-import Map from './components/map/map';
+import Map from './components/mapTankBattle/mapTankBattle';
 
 
 function App() {
