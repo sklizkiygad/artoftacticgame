@@ -3,69 +3,40 @@ import { IHex } from '../../utils/types';
 import Hex from '../hex/hex';
 import style from './mapTankBattle.module.scss'
 
-const Map = ()=>{
-    const [hexes, setHexes] = useState<Array<IHex>>([{id:0}])
+interface IMap {
+    rowCount: number,
+    columnCount: number
+}
 
-   
+const Map:React.FC<IMap> = ({rowCount, columnCount})=>{
+    const [hexes, setHexes] = useState<Array<Array<IHex>>>([])
+
    const fillHexArray=()=>{
-    let arrayToFill=[]
-    for (let i = 0; i<38;i++){
-        arrayToFill.push({id:i})
+    let arrayToFill:Array<Array<IHex>> = [];
+    let idCounter:number = 0;
+    let isEven:boolean = false;
+    for (let i = 0; i<rowCount;i++){
+        let columnItems:Array<IHex> = [];
+        for(let j = 0; j < (isEven ? columnCount - 1 : columnCount); j++){
+            columnItems.push({id:idCounter})
+            idCounter++;
+        }
+        isEven = !isEven;
+        arrayToFill.push(columnItems);
     }
     setHexes(arrayToFill)
    }
 
     useEffect(()=>{
         fillHexArray()
+        console.log(hexes)
     },[])
 
     return(<div className={style.mapWrapper}>
-    
-    <div className={style.hexRow}>
-    {
-        hexes.slice(0, 7).map((item)=>{
-            return  <Hex dataHex={item}/>
-        })
-        
-    }
-    </div>
 
-    <div className={style.hexRow}>
-    {
-        hexes.slice(8, 14).map((item)=>{
-            return  <Hex dataHex={item}/>
-        })
-        
-    }
-    </div>
-
-    <div className={style.hexRow}>
-    {
-        hexes.slice(15, 22).map((item)=>{
-            return  <Hex dataHex={item}/>
-        })
-        
-    }
-    </div>
-
-    <div className={style.hexRow}>
-    {
-        hexes.slice(23, 29).map((item)=>{
-            return  <Hex dataHex={item}/>
-        })
-        
-    }
-    </div>
-
-    <div className={style.hexRow}>
-    {
-        hexes.slice(30, 37).map((item)=>{
-            return  <Hex dataHex={item}/>
-        })
-        
-    }
-    </div>
-
+    {hexes.map(el=>{
+      return <div className={style.hexRow}>{el.map(item=><Hex dataHex={item}/>)}</div>  
+    })}
        </div>
     )
 }

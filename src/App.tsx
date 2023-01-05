@@ -4,7 +4,7 @@ import Map from './components/mapTankBattle/mapTankBattle';
 function App() {
   return (
     <div className="App">
-      <Map/>
+      <Map rowCount={5} columnCount={7} />
 
     </div>
   );

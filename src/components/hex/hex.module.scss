@@ -1,7 +1,7 @@
 @import '../../assets/style/_general.scss';
 
 .hex{
-  background: brown;
+  background: #4b5320;
   height: $hex-size;
   width: $hex-size;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -9,6 +9,13 @@
   cursor: pointer;
 
   &:hover{
-    background-color: blue;
+    background-color: #333818;
+  }
+
+  p{
+    color: white;
+    position: absolute;
+    bottom: 5px;
+    left: calc(50% - 5px);
   }
 }

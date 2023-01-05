@@ -10,7 +10,7 @@ const Hex:React.FC<hexProps> = ({dataHex}) => {
 
     return (
         <div className={style.hex}>
-           <p style={{color:'black', position:'absolute', bottom:0, left:'50%'}}>{dataHex.id.toString()}</p>
+           <p>{dataHex.id.toString()}</p>
         </div>
     );
 };
