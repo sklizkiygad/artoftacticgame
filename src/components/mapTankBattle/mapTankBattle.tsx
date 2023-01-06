@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { IHex } from '../../utils/types';
 import Hex from '../hex/hex';
+import TankTemplate from '../TankTemplate/TankTemplate';
 import style from './mapTankBattle.module.scss'
+
+
 
 interface IMap {
     rowCount: number,
@@ -32,10 +35,14 @@ const Map:React.FC<IMap> = ({rowCount, columnCount})=>{
         console.log(hexes)
     },[])
 
-    return(<div className={style.mapWrapper}>
+    return(
+        
+    <div className={style.mapWrapper}>
+
+      
 
     {hexes.map(el=>{
-      return <div className={style.hexRow}>{el.map(item=><Hex dataHex={item}/>)}</div>  
+      return <div className={style.hexRow}>{el.map(item=><Hex dataHex={item}><TankTemplate tankType={''}/></Hex>)}</div>  
     })}
        </div>
     )
